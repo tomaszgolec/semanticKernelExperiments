@@ -18,8 +18,8 @@ public class ApiKeysManager
 
     public string GetApiKey(string keyName)
     {
-        var key = _config[$"AppSettings:{keyName}"];
-        return key ?? throw new KeyNotFoundException($"API Key: {projectName} is not found.");
+        var key = _config[$"Keys:{keyName}"];
+        return key ?? throw new KeyNotFoundException($"API Key: {keyName} is not found.");
     }
 }
 
