@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentFramworkExperiment", "AgentFramworkExperiment\AgentFramworkExperiment.csproj", "{0D1A8585-1002-46DE-B162-D4B93FC351F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{B50ED329-8655-4688-B5DC-AB6A0B92736A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiKeysManager", "ApiKeysManager\ApiKeysManager.csproj", "{8699D66E-3AD2-44DC-988F-D200B4342B43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0D1A8585-1002-46DE-B162-D4B93FC351F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D1A8585-1002-46DE-B162-D4B93FC351F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D1A8585-1002-46DE-B162-D4B93FC351F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50ED329-8655-4688-B5DC-AB6A0B92736A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50ED329-8655-4688-B5DC-AB6A0B92736A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50ED329-8655-4688-B5DC-AB6A0B92736A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50ED329-8655-4688-B5DC-AB6A0B92736A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
