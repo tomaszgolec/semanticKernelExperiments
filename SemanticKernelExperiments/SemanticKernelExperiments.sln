@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentFramworkExperiment", "AgentFramworkExperiment\AgentFramworkExperiment.csproj", "{0D1A8585-1002-46DE-B162-D4B93FC351F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgentFramworkExperiment", "AgentFramworkExperiment\AgentFramworkExperiment.csproj", "{0D1A8585-1002-46DE-B162-D4B93FC351F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{B50ED329-8655-4688-B5DC-AB6A0B92736A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{B50ED329-8655-4688-B5DC-AB6A0B92736A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiKeysManager", "ApiKeysManager\ApiKeysManager.csproj", "{8699D66E-3AD2-44DC-988F-D200B4342B43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiKeysManager", "ApiKeysManager\ApiKeysManager.csproj", "{8699D66E-3AD2-44DC-988F-D200B4342B43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIParserTestApp", "AIParserTestApp\AIParserTestApp.csproj", "{AB133674-A89C-4DE7-A9CB-6980E9BD6B3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8699D66E-3AD2-44DC-988F-D200B4342B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB133674-A89C-4DE7-A9CB-6980E9BD6B3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB133674-A89C-4DE7-A9CB-6980E9BD6B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB133674-A89C-4DE7-A9CB-6980E9BD6B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB133674-A89C-4DE7-A9CB-6980E9BD6B3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
