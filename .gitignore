@@ -5,3 +5,5 @@ SemanticKernelExperiments/ApiKeysManager/bin/
 SemanticKernelExperiments/ApiKeysManager/obj/
 SemanticKernelExperiments/GettingStarted/bin/
 SemanticKernelExperiments/GettingStarted/obj/
+SemanticKernelExperiments/AIParserTestApp/obj/AIParserTestApp.csproj.nuget.g.props
+SemanticKernelExperiments/AIParserTestApp/obj/
