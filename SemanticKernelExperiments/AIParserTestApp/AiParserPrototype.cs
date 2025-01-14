@@ -20,14 +20,13 @@ namespace AIParserTestApp
             _apiKey = apiKey;
         }
 
-
-        public async Task<ExampleModel> NoGenericParse(string json)
+        public async Task<T> Parse<T>(string json)
         {
 
             IKernelBuilder builder = Kernel.CreateBuilder();
             builder.AddOpenAIChatCompletion(_model, _apiKey);
             //add type ass pareameter to make it generic 
-            builder.Plugins.AddFromType<ExampleModel>();
+            builder.Plugins.AddFromType<T>();
 
             Kernel kernel = builder.Build();
 
@@ -41,7 +40,6 @@ namespace AIParserTestApp
 
             ChatMessageContent result = await chatCompletionService.GetChatMessageContentAsync(chatHistory, settings, kernel);
 
-            // Check if the AI model has generated a response.
             if (result.Content is not null)
             {
                 //throw expetion here that somehow model gerenate response before usage of a tool
@@ -59,11 +57,10 @@ namespace AIParserTestApp
             var functionCall = functionCalls.FirstOrDefault();
             // Invoking the function
             FunctionResultContent resultContent = await functionCall.InvokeAsync(kernel);
-            ExampleModel model = (ExampleModel)resultContent.Result;
+            T model = (T)resultContent.Result;
 
             return model;
         }
-
 
     }
 }

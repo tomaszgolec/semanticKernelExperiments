@@ -1,11 +1,10 @@
 ﻿using AIParserTestApp;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
 
 
 var apiKey = ApiKeysManager.Instance.GetApiKey("OpenApiKey");
 var llmModel = "gpt-3.5-turbo";
-    string exampleJson = @"
+
+string exampleJson = @"
 {
     ""userId"": ""12345"",
     ""name"": ""John Doe"",
@@ -17,7 +16,8 @@ var llmModel = "gpt-3.5-turbo";
 }";
 
 var aiParser = new AiParserPrototype(llmModel, apiKey);
-var model2 = await aiParser.NoGenericParse(exampleJson);
+
+ExampleModel model = await aiParser.Parse<ExampleModel>(exampleJson);
 
 Console.WriteLine(model2.ToString());
 
