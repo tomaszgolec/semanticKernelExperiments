@@ -1,4 +1,5 @@
 ﻿using AIParserTestApp;
+using AIParserTestApp.Models;
 
 
 var apiKey = ApiKeysManager.Instance.GetApiKey("OpenApiKey");
@@ -15,9 +16,10 @@ string exampleJson = @"
     ""isActive"": true
 }";
 
-var aiParser = new AiParserPrototype(llmModel, apiKey);
+var aiSerializer = new AiSerializerPrototype(llmModel, apiKey);
 
-ExampleModel model = await aiParser.Parse<ExampleModel>(exampleJson);
+ExampleModel model = await aiSerializer.Deserialize<ExampleModel>(exampleJson);
 
-Console.WriteLine(model2.ToString());
+
+Console.WriteLine(model.ToString());
 
