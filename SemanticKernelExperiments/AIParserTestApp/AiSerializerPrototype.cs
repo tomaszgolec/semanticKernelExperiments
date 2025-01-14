@@ -15,6 +15,9 @@ namespace AIParserTestApp
             _apiKey = apiKey;
         }
 
+
+        //todo make it more inteligent or create another function with higher inteligence where
+        //todo chat will be able to decide if delivered data are enough to fullfill the model and create the instance
         public async Task<T> Deserialize<T>(string json)
         {
 
