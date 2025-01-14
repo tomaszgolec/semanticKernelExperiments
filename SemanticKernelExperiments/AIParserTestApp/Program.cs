@@ -1,10 +1,9 @@
 ﻿using AIParserTestApp;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
 
+
+var apiKey = ApiKeysManager.Instance.GetApiKey("OpenApiKey");
 string exampleJson = @"
 {
     ""userId"": ""12345"",
@@ -16,42 +15,40 @@ string exampleJson = @"
     ""isActive"": true
 }";
 
-//TODO jesli nei da sie odczytac tego tak po prostu z wyniku 
-//to moze sprobuj wrzucic mu klase po refleksji zbey po prostu dopasowal jsona tak 
-//zeby pasowal do obiektu
-
-var modelId = "gpt-3.5-turbo";
-var apiKey = ApiKeysManager.Instance.GetApiKey("OpenApiKey");
-
-var builder = Kernel.CreateBuilder().AddOpenAIChatCompletion(modelId, apiKey);
-
-builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace));
+IKernelBuilder builder = Kernel.CreateBuilder();
+builder.AddOpenAIChatCompletion("gpt-3.5-turbo", apiKey);
+builder.Plugins.AddFromType<ExampleModel>();
 
 Kernel kernel = builder.Build();
-var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
-kernel.Plugins.AddFromType<ExampleModel>("ExampleModel");
+IChatCompletionService chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
-OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
+// Manual function invocation needs to be enabled explicitly by setting autoInvoke to false.
+PromptExecutionSettings settings = new() { FunctionChoiceBehavior = Microsoft.SemanticKernel.FunctionChoiceBehavior.Required(autoInvoke: false) };
+
+ChatHistory chatHistory = [];
+chatHistory.AddUserMessage(exampleJson);
+
+ChatMessageContent result = await chatCompletionService.GetChatMessageContentAsync(chatHistory, settings, kernel);
+
+// Check if the AI model has generated a response.
+if (result.Content is not null)
 {
-    FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
-};
+    //throw expetion here that somehow model gerenate response before usage of a tool
+}
 
-var history = new ChatHistory();
+chatHistory.Add(result);
 
-string? userInput;
+// Check if the AI model has chosen any function for invocation.
+IEnumerable<FunctionCallContent> functionCalls = FunctionCallContent.GetFunctionCalls(result);
+if (!functionCalls.Any())
+{
+    //throw Exception that that plugin is missing 
+}
 
-Console.Write("User > ");
-userInput = $"Sparsuj nastepujacy json do klasy ExampleModel :{exampleJson}";
+var functionCall = functionCalls.FirstOrDefault();
+// Invoking the function
+FunctionResultContent resultContent = await functionCall.InvokeAsync(kernel);
+ExampleModel model = (ExampleModel)resultContent.Result;
 
-history.AddUserMessage(userInput);
-
-var result = await chatCompletionService.GetChatMessageContentAsync(
-    history,
-    executionSettings: openAIPromptExecutionSettings,
-    kernel: kernel);
-
-
-Console.WriteLine("Assistant > " + result);
-
-history.AddMessage(result.Role, result.Content ?? string.Empty);
+Console.ReadKey();
